@@ -22,6 +22,7 @@ public class IntroApplication {
 	@GetMapping("/todos")
 	public ArrayList<String> getAll(){
 
+		System.out.println("Hallo");
 		return todos;
 	}
 
