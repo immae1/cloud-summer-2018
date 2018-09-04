@@ -1,7 +1,9 @@
 package com.example.intro;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
@@ -10,13 +12,32 @@ import java.util.ArrayList;
 @SpringBootApplication
 @RestController
 public class IntroApplication {
+	interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
+	}
 	ArrayList<String> todos = new ArrayList<String>();
+	@Autowired
+	ToDoRepository toDoRepository;
 
 	@GetMapping("/todos")
 	public ArrayList<String> getAll(){
 
 		return todos;
+	}
+
+	@GetMapping("/readAll")
+	String readAll(){
+
+		return toDoRepository.findAll().toString();
+
+	}
+
+	@PostMapping("/add/{todo}")
+	String create(@PathVariable String todo){
+
+		toDoRepository.save(new ToDo(todo));
+		return "Added: "+todo;
+
 	}
 
 	@PostMapping("/todos/{todo}")
