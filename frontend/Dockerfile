@@ -15,8 +15,8 @@ RUN ["mvn", "clean", "install"]
 #we need to know how to projectname
 RUN ["ls", "/code/target"]
 RUN ["pwd"]
-RUN ["ls", "-ltrh", "/code/target/intro-0.0.1-SNAPSHOT.jar"]
+RUN ["ls", "-ltrh", "/code/target/frontend-0.0.1-SNAPSHOT.jar"]
 
 EXPOSE 8081
 
-ENTRYPOINT [ "java", "-jar", "/code/target/intro-0.0.1-SNAPSHOT.jar" ]
+ENTRYPOINT [ "java", "-jar", "/code/target/frontend-0.0.1-SNAPSHOT.jar" ]

@@ -29,7 +29,7 @@ public class FrontendApplication {
 
 		RestTemplate template = new RestTemplate();
 
-		String url = "http://localhost:8080/todos/";
+		String url = "http://172.17.0.4:8080/todos/";
 
 		ResponseEntity<String[]> response = template.getForEntity(url, String[].class);
 
@@ -51,7 +51,7 @@ public class FrontendApplication {
 
 		RestTemplate template = new RestTemplate();
 
-		String url = "http://localhost:8080/todos/"+toDo;
+		String url = "http://172.17.0.4:8080/todos/"+toDo;
 
 		ResponseEntity<String> response = template.postForEntity(url, null, String.class);
 		System.out.println("UI.addItem - POST Response: " + response.getBody());
@@ -67,7 +67,7 @@ public class FrontendApplication {
 
 		RestTemplate template = new RestTemplate();
 
-		String url = "http://localhost:8080/todos/" + toDo;
+		String url = "http://172.17.0.4:8080/todos/" + toDo;
 
 		template.delete(url);
 
